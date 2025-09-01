@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Juan Diego Acosta Ojeda
+// ID: 185015
+
+int main() {
+    int rows, cols;
+    int **A, **B, **C;
+
+    printf("Ingrese el número de filas: ");
+    scanf("%d", &rows);
+    printf("Ingrese el número de columnas: ");
+    scanf("%d", &cols);
+
+    // Reservar memoria para A
+    A = (int **)malloc(rows * sizeof(int *));
+    for (int i = 0; i < rows; i++) {
+        A[i] = (int *)malloc(cols * sizeof(int));
+    }
+
+    // Reservar memoria para B
+    B = (int **)malloc(rows * sizeof(int *));
+    for (int i = 0; i < rows; i++) {
+        B[i] = (int *)malloc(cols * sizeof(int));
+    }
+
+    // Reservar memoria para C
+    C = (int **)malloc(rows * sizeof(int *));
+    for (int i = 0; i < rows; i++) {
+        C[i] = (int *)malloc(cols * sizeof(int));
+    }
+
+    // Leer valores para A
+    printf("\nIngrese los valores de la matriz A:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", (*(A + i) + j));
+        }
+    }
+
+    // Leer valores para B
+    printf("\nIngrese los valores de la matriz B:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            scanf("%d", (*(B + i) + j));
+        }
+    }
+
+    // Calcular C = A + B usando aritmética de punteros
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            *(*(C + i) + j) = *(*(A + i) + j) + *(*(B + i) + j);
+        }
+    }
+
+    // Mostrar la matriz resultante
+    printf("\nMatriz C = A + B:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", *(*(C + i) + j));
+        }
+        printf("\n");
+    }
+
+    // Liberar memoria
+    for (int i = 0; i < rows; i++) {
+        free(A[i]);
+        free(B[i]);
+        free(C[i]);
+    }
+    free(A);
+    free(B);
+    free(C);
+
+    return 0;
+}
