@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+// Juan Diego Acosta Ojeda
+// ID: 185015
+
+void printSpiral(int rows, int cols, int matrix[rows][cols]) {
+    int top = 0, bottom = rows - 1;
+    int left = 0, right = cols - 1;
+
+    while (top <= bottom && left <= right) {
+        // Recorrer de izquierda a derecha
+        for (int i = left; i <= right; i++) {
+            printf("%d ", matrix[top][i]);
+        }
+        top++;
+
+        // Recorrer de arriba hacia abajo
+        for (int i = top; i <= bottom; i++) {
+            printf("%d ", matrix[i][right]);
+        }
+        right--;
+
+        // Recorrer de derecha a izquierda
+        if (top <= bottom) {
+            for (int i = right; i >= left; i--) {
+                printf("%d ", matrix[bottom][i]);
+            }
+            bottom--;
+        }
+
+        // Recorrer de abajo hacia arriba
+        if (left <= right) {
+            for (int i = bottom; i >= top; i--) {
+                printf("%d ", matrix[i][left]);
+            }
+            left++;
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int N, M;
+    printf("Enter number of rows: ");
+    scanf("%d", &N);
+    printf("Enter number of cols: ");
+    scanf("%d", &M);
+
+    int matrix[N][M];
+    printf("Enter elements of the matrix:\n");
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    printf("Spiral order: ");
+    printSpiral(N, M, matrix);
+
+    return 0;
+}
