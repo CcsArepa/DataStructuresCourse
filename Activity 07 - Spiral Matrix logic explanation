@@ -1,0 +1,11 @@
+Activity 07 - Spiral Matrix logic explanation
+
+The problem statement was to print a matrix in a spiral form. I created a function "printSpiral", starting from the top left corner and moving clockwise until all elements are covered.
+
+Traverse in spiral order while "top <= bottom" and "left <= right":
+   - Print from **left to right** across the top row, then move "top++".  
+   - Print from **top to bottom** along the right column, then move "right--".  
+   - Print from **right to left** across the bottom row (if rows remain), then move "bottom--".  
+   - Print from **bottom to top** along the left column (if columns remain), then move "left++".  
+
+Repeat until all elements are printed.
